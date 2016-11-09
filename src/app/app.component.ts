@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 // import { PARENTS } from '_mock/parents.json';
@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+
+import { Parent } from './parent';
 
 // import { MyFilterPipe } from './_filter/filter-pipe';
 // import { Ng2FilterPipe } from 'ng2-filter-pipe';
@@ -29,6 +31,10 @@ export class AppComponent {
   articles: FirebaseListObservable<any[]>;
 
   item: FirebaseObjectObservable<any>;
+
+  // @Input()term: string = '1297512';
+  // @Input()parentFilteras;
+  @Input() parentFilteras: Parent;
 
   // parents;
   // parents = {};

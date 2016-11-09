@@ -15,3 +15,80 @@ ul, p, div, span{
   margin: 1rem;
   padding: 1rem;
 }
+
+
+
+.input-parents-filter{
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #999;
+  font-size: 3rem;
+  padding: 0.5rem;
+}
+
+.list-parents{
+  margin:0;
+  padding-left: 0;
+}
+
+.list-parents-elem{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 23.85%;
+  margin-right: 1.5%;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  background: #eee;
+}
+
+.list-parents-elem:nth-child(4n){
+  margin-right: 0;
+}
+
+.list-parents-elem:hover{
+  background: #ccc;
+  cursor: pointer;
+}
+
+.list-parents-elem h3{
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+.list-parents-elem h3 strong{
+  margin-right: 2rem;
+  font-size: 1.5rem;
+}
+
+.list-parents-elem h3 .badge{
+  background: #999;
+  color: #eee;
+  padding: 0.2rem 0.4rem;
+  float: right;
+  border-radius: 0.2rem;
+  font-size: 0.6rem;
+}
+
+.list-parents-elem h3 .badge:after{
+  content: ' childs';
+}
+
+.list-parents-elem span:after{
+  content: ', ';
+}
+
+.list-parents-elem span:last-child:after{
+  content: '';
+}
+
+.list-parents-elem-childs{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 2rem;     /* fallback */
+  max-height: 6rem;      /* fallback */
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}

@@ -1,18 +1,19 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Parent } from '../parent';
 
-@Pipe({
-    name: 'myfilter'
-})
+@Pipe({ name: 'parentsFilter' })
 
-@Injectable()
-export class MyFilterPipe implements PipeTransform {
-  transform(items: Parent[], args: any[]): Parent[] {
-    debugger
-    if (null === args[0]){
-      return items;
+// @Injectable()
+export class ParentsFilterPipe implements PipeTransform {
+  transform(items: Parent[], filter: string): Parent[] {
+    // debugger
+    if (filter != ""){
+      return items.filter(item => item.code.indexOf(filter) !== -1);
     } else {
-      return items.filter(item => item.code.indexOf(args[0]) !== -1);
+      return items;
     }
+    //   return items;
+    // } else {
+    // }
   }
 }

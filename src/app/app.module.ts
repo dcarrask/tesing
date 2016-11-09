@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import { RouterModule }   from '@angular/router';
 
-// import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 // import { HttpModule } from '@angular/http';
 import { HttpModule }      from '@angular/http';
 
@@ -15,7 +15,7 @@ import './rxjs-extensions';
 import { ParentSearchComponent } from './parent-search.component'
 import { ParentSearchService } from './parent-search.service'
 
-import { MyFilterPipe } from './pipes/common_pipes';
+import { ParentsFilterPipe } from './pipes/common_pipes';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDFmkKkFVgT447JIloPhHN2YbGH8b_tl3I",
@@ -28,7 +28,7 @@ export const firebaseConfig = {
 @NgModule({
   imports: [
     BrowserModule,
-    // FormsModule,
+    FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     // RouterModule.forRoot([
@@ -38,11 +38,12 @@ export const firebaseConfig = {
     //   }
     // ])
   ],
+  // directives: [  ]
   declarations: [
     AppComponent,
     // ParentsFilterPipe
     ParentSearchComponent,
-    MyFilterPipe
+    ParentsFilterPipe,
   ],
   providers: [
     ParentSearchService
