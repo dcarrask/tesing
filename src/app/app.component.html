@@ -1,3 +1,186 @@
 <h1>
   {{title}}
 </h1>
+
+<!-- <hr>
+<hr> -->
+<!--
+<h4>Users</h4>
+<ul>
+  <li class="text" *ngFor="let item of users | async">
+active: {{item.active}}<br>
+age: {{item.age}}<br>
+name: {{item.name}}<br>
+surname: {{item.surname}}<br>
+  </li>
+</ul>
+-->
+
+<!-- <input type="text"
+       name=""
+       class="input-parents-filter"
+       value=""
+       (keyup)="getServices()"> -->
+
+<input type="text" class="input-parents-filter" placeholder="Type Parent Code" #listFilter (keyup)="0" />
+<!-- <input type="text" class="input-parents-filter" placeholder="Type Parent Code"> -->
+
+
+
+
+<style>
+
+.input-parents-filter{
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #999;
+  font-size: 3rem;
+  padding: 0.5rem;
+}
+
+.list-parents{
+  margin:0;
+  padding-left: 0;
+}
+
+.list-parents-elem{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 23.85%;
+  margin-right: 1.5%;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  background: #eee;
+}
+
+.list-parents-elem:nth-child(4n){
+  margin-right: 0;
+}
+
+.list-parents-elem:hover{
+  background: #ccc;
+  cursor: pointer;
+}
+
+.list-parents-elem h3{
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+.list-parents-elem h3 strong{
+  margin-right: 2rem;
+  font-size: 1.5rem;
+}
+
+.list-parents-elem h3 .badge{
+  background: #999;
+  color: #eee;
+  padding: 0.2rem 0.4rem;
+  float: right;
+  border-radius: 0.2rem;
+  font-size: 0.6rem;
+}
+
+.list-parents-elem h3 .badge:after{
+  content: ' childs';
+}
+
+.list-parents-elem span:after{
+  content: ', ';
+}
+
+.list-parents-elem span:last-child:after{
+  content: '';
+}
+
+.list-parents-elem-childs{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 2rem;     /* fallback */
+  max-height: 6rem;      /* fallback */
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+</style>
+
+<h4>Parents</h4>
+<ul class="list-parents">
+  <li class="list-parents-elem" *ngFor="let item of (parents | myfilter:'129')">
+    <h3><strong>{{ item.code }}</strong><span class="badge">{{ item.counter }}</span></h3>
+    <div class="list-parents-elem-childs">
+      <span class="text" *ngFor="let elem of item.elems">{{ elem.code }}</span>
+    </div>
+  </li>
+</ul>
+
+
+<hr>
+
+
+
+
+
+
+<!-- {
+  "code" : "120CN151212",
+  "description-long" : "CONTERA CUADRADA INTERIOR ESTRIADA 12X12  (1000 UND)",
+  "family" : "120 - FIJACION",
+  "iva" : "21.00%",
+  "margin-real" : 300,
+  "name" : "Tarifa 1",
+  "price-of-cost" : "14.99",
+  "price-sale" : "59.96",
+  "provider" : "413 - FORTAPS S.L.",
+} -->
+
+                  <!-- <table class="table-articles">
+                    <thead>
+                      <tr>
+                        <th>key</th>
+                        <th>code</th>
+                        <th>description_long</th>
+                        <th>family</th>
+                        <th>iva</th>
+                        <th>margin_real</th>
+                        <th>name</th>
+                        <th>price_of_cost</th>
+                        <th>price_sale</th>
+                        <th>provider</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of articles | async">
+                        <td>{{ item.$key }}</td>
+                        <td>{{ item.code }}</td>
+                        <td>{{ item.description_long }}</td>
+                        <td>{{ item.family }}</td>
+                        <td>{{ item.iva }}</td>
+                        <td>{{ item.margin_real }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price_of_cost }}</td>
+                        <td>{{ item.price_sale }}</td>
+                        <td>{{ item.provider }}</td>
+                      </tr>
+                    </tbody>
+                  </table> -->
+
+<!-- <h4>Articles</h4>
+<ul>
+  <li class="article" *ngFor="let item of articles | async">
+    <div>key: {{ item.$key }}</div>
+    <div>code: {{ item.code }}</div>
+    <div>description_long: {{ item.description_long }}</div>
+    <div>family: {{ item.family }}</div>
+    <div>iva: {{ item.iva }}</div>
+    <div>margin_real: {{ item.margin_real }}</div>
+    <div>name: {{ item.name }}</div>
+    <div>price_of_cost: {{ item.price_of_cost }}</div>
+    <div>price_sale: {{ item.price_sale }}</div>
+    <div>provider: {{ item.provider }}</div>
+  </li>
+</ul> -->
+
