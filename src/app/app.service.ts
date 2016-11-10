@@ -3,6 +3,10 @@ import { Http } from '@angular/http';
 import { PARENTS } from './mock-parents';
 import { Parent } from './parent';
 
+import R from 'ramda';
+
+// var R = require('ramda');
+
 @Injectable()
 export class AppService {
 
@@ -22,6 +26,15 @@ export class AppService {
 
   getParents(): Parent[] {
     return PARENTS;
+  }
+
+  getParentChilds(parentCode:String): Parent[] {
+    debugger
+    return PARENTS;
+    // debugger
+    // R.find(R.propEq('code', "parentCode"))(PARENTS);
+    // return R.find(R.propEq('code', "parentCode"))(PARENTS);
+    // return PARENTS;
   }
 
   // getFriends() {

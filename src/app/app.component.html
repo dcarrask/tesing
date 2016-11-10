@@ -2,26 +2,9 @@
   {{title}}
 </h1>
 
-<!-- <hr>
-<hr> -->
-<!--
-<h4>Users</h4>
-<ul>
-  <li class="text" *ngFor="let item of users | async">
-active: {{item.active}}<br>
-age: {{item.age}}<br>
-name: {{item.name}}<br>
-surname: {{item.surname}}<br>
-  </li>
-</ul>
--->
+<button (click)="onClick()">Alert</button>
 
-<!-- <input type="text"
-       name=""
-       class="input-parents-filter"
-       value=""
-       (keyup)="getServices()"> -->
-
+<button (click)="openSetAsParent('1297510')">openSetAsParent</button>
 
 <input type="text" [(ngModel)]="parentFilteras" class="input-parents-filter"  placeholder="Type Parent Code" />
 <!-- <input type="text" class="input-parents-filter" placeholder="Type Parent Code"> -->
@@ -39,6 +22,18 @@ surname: {{item.surname}}<br>
     </div>
   </li>
 </ul>
+
+<h5>parentsToSet</h5>
+<ul class="list-parents">
+  <li class="list-parents-elem" *ngFor="let item of parentsToSet">
+    <h3><strong>{{ item.code }}</strong><span class="badge">{{ item.counter }}</span></h3>
+    <div class="list-parents-elem-childs">
+      <span class="text" *ngFor="let elem of item.elems">{{ elem.code }}</span>
+    </div>
+  </li>
+</ul>
+
+
 
 
 <hr>

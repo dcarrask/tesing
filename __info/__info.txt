@@ -1,0 +1,12 @@
+# GIT ###################################################################################################
+
+git remote add origin url-to-your-remote
+
+git remote add origin https://github.com/dcarrask/tesing.git
+git push -u origin master
+
+
+
+# PORTS ###################################################################################################
+Kill port
+lsof -i tcp:4200

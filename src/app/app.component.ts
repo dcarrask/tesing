@@ -6,11 +6,20 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 
 import { AppService } from './app.service';
 
-import {Http, Headers, RequestOptions} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { Observable} from 'rxjs/Observable';
 
 import { Parent } from './parent';
 
+// import { Overlay, overlayConfigFactory } from 'angular2-modal';
+// import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+// import { CustomModalContext, CustomModal } from './custom-modal-sample';
+
+import { ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { Overlay } from 'angular2-modal';
+import { Modal } from 'angular2-modal/plugins/bootstrap';
+
+// import { SweetAlertService } from 'ng2-sweetalert2';
 // import { MyFilterPipe } from './_filter/filter-pipe';
 // import { Ng2FilterPipe } from 'ng2-filter-pipe';
 
@@ -20,7 +29,7 @@ import { Parent } from './parent';
   // pipes: [ Ng2FilterPipe ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ AppService ]
+  providers: [ AppService, Modal ]
 })
 
 // export class AppComponent implements OnInit {
@@ -34,11 +43,13 @@ export class AppComponent {
 
   // @Input()term: string = '1297512';
   // @Input()parentFilteras;
-  @Input() parentFilteras: Parent;
+  @Input() parentFilteras: String;
 
   // parents;
   // parents = {};
-  parents: Object;
+
+  parents: Parent[];
+  parentsToSet: Parent[];
 
   parentsFilter:string[];
 
@@ -52,11 +63,31 @@ export class AppComponent {
 
   // this.http.get('./friends.json').map((res: Response) => res.json()).subscribe(res => this.friends = res);
 
-  constructor(af: AngularFire, private _http: Http, _appService: AppService) {
+  // openCustom() {
+  //   return this.modal.open(CustomModal,  overlayConfigFactory({ num1: 2, num2: 3 }, BSModalContext));
+  // }
+
+  // swalService;
+
+  // static get parameters() {
+  //   return [[SweetAlertService]];
+  // }
+
+  constructor(af: AngularFire,
+              private _http: Http,
+              _appService: AppService,
+              overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
 
     // private _friendService: FriendService) {
-    this.parents = _appService.getParents();
 
+    overlay.defaultViewContainer = vcRef;
+
+    this.parents = _appService.getParents();
+    this.parentsToSet = _appService.getParentChilds('1297510');
+
+    //debugger
+
+    // this.swalService = swal;
     // debugger
     // this.items = af.database.list('/todos');
     // console.log(this.items)
@@ -228,6 +259,60 @@ export class AppComponent {
 
 
     // this.articles = af.database.
+  }
+
+  // uep() {
+  //   this.swalService('Hello world!')
+  //  }
+
+  openSetAsParent(parentCode){
+     // this.parentsToSet = AppService.getParentChilds(parentCode);
+
+    // getParentChilds
+    this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title('Set ' + parentCode + ' as Parent Code?')
+        .body(`
+            <h4>Alert is a classic (title/body/footer) 1 button modal window that
+            does not block.</h4>
+            <b>Configuration:</b>
+            <pre><pre>
+            <ul>
+                <li>Non blocking (click anywhere outside to dismiss)</li>
+                <li>Size large</li>
+                <li>Dismissed with default keyboard key (ESC)</li>
+                <li>Close wth button click</li>
+                <li>HTML content</li>
+            </ul>`)
+        .open();
+  }
+
+  onClick() {
+    // this.modal.alert()
+    //   .size('lg')
+    //   .isBlocking(true)
+    //   .showClose(true)
+    //   .keyboard(27)
+    //   .title('Hello World')
+    //   .body('A Customized Modal')
+    //   .open();
+    this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title('A simple Alert style modal window')
+        .body(`
+            <h4>Alert is a classic (title/body/footer) 1 button modal window that
+            does not block.</h4>
+            <b>Configuration:</b>
+            <ul>
+                <li>Non blocking (click anywhere outside to dismiss)</li>
+                <li>Size large</li>
+                <li>Dismissed with default keyboard key (ESC)</li>
+                <li>Close wth button click</li>
+                <li>HTML content</li>
+            </ul>`)
+        .open();
   }
 
   // ngOnInit() {
